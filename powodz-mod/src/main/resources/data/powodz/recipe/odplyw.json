@@ -1,0 +1,1 @@
+{ "type": "minecraft:crafting_shaped", "category": "redstone", "pattern": ["I I", " H ", "I I"], "key": { "I": { "item": "minecraft:iron_bars" }, "H": { "item": "minecraft:hopper" } }, "result": { "id": "powodz:odplyw", "count": 2 } }

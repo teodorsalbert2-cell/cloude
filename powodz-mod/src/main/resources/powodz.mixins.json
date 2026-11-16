@@ -1,0 +1,7 @@
+{
+  "required": true,
+  "package": "pl.powodz.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["FlowableFluidMixin"],
+  "injectors": { "defaultRequire": 1 }
+}

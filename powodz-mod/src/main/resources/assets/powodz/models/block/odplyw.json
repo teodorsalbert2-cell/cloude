@@ -1,0 +1,1 @@
+{ "parent": "minecraft:block/cube_bottom_top", "textures": { "top": "powodz:block/odplyw_top", "bottom": "powodz:block/odplyw_side", "side": "powodz:block/odplyw_side" } }

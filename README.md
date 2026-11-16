@@ -42,3 +42,31 @@ Woda opada tylko w promieniu `#promien` od graczy – w dalszych, niewczytanych 
 Co `#predkosc` ticków poziom rośnie o 1, a co 2 sekundy datapack wypełnia wodą powietrze, trawę, kwiaty itp.
 w kwadracie wokół każdego gracza (3 najwyższe warstwy powodzi). Dzięki temu woda pojawia się też tam,
 gdzie gracz dopiero dojdzie. Bloki stałe nie są niszczone.
+
+---
+
+# 🌧 Mod „Powódź” (Fabric, Minecraft 1.21.1) – prawdziwa fizyka wody
+
+Plik: `powodz-mod-1.0.0-mc1.21.1.jar` (kod w `powodz-mod/`).
+
+## Instalacja
+1. Zainstaluj [Fabric Loader](https://fabricmc.net/use/) dla **1.21.1**.
+2. Do `.minecraft/mods/` wrzuć `powodz-mod-1.0.0-mc1.21.1.jar` oraz **Fabric API** (dla 1.21.1).
+
+## Co robi
+- **Woda jest skończona** – ma 8 warstw (po 1/8 bloku = „piksele”). Nie tworzy się z niczego; spływa w dół i wyrównuje się na boki.
+- **Deszcz** dolewa po 1/8 bloku w losowych miejscach wokół graczy (w każdym biomie, gdzie pada), **burza 3× więcej**.
+- **Słońce** – cienkie warstwy powoli parują (morza i jeziora zostają).
+- **Kanały** – woda sama szuka spadku do 6 bloków i spływa do rowów.
+- **Odpływ** (nowy blok) – połyka wodę, która na niego spłynie. Postaw go na dnie kanału.
+  Crafting: kraty żelazne w rogach + lej na środku → 2 odpływy.
+
+## Gamerule
+| Gamerule | Domyślnie | Opis |
+|---|---|---|
+| `powodzFizyka` | true | włącza całą fizykę (false = zwykła woda) |
+| `powodzDeszcz` | 8 | krople na tick wokół gracza podczas deszczu (burza = 3×) |
+| `powodzParowanie` | 2 | ile miejsc na tick paruje przy ładnej pogodzie (0 = wyłączone) |
+| `powodzPromien` | 64 | promień deszczu wokół gracza |
+
+⚠ Uwaga: z włączoną fizyką woda z wiadra rozlewa się w cienką kałużę (nie ma nieskończonych źródeł).
