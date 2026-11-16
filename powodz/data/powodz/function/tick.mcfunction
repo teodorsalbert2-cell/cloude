@@ -1,3 +1,4 @@
+execute if score #auto powodz matches 1 run return run function powodz:tick_auto
 execute unless score #aktywna powodz matches 1 run return 0
 scoreboard players add #licznik powodz 1
 execute if score #licznik powodz >= #predkosc powodz run function powodz:podnies

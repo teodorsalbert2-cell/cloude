@@ -1,3 +1,4 @@
+scoreboard players set #auto powodz 0
 # Poziom startowy = Y gracza wywołującego (albo #start, gdy z konsoli/bloku poleceń)
 scoreboard players operation #poziom powodz = #start powodz
 execute if entity @s[type=player] store result score #poziom powodz run data get entity @s Pos[1]

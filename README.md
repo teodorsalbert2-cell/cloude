@@ -11,12 +11,22 @@ Woda stopniowo podnosi się w całym świecie (wokół wszystkich graczy w Overw
 | Komenda | Działanie |
 |---|---|
 | `/function powodz:start` | start powodzi od poziomu Twoich stóp |
+| `/function powodz:auto` | **tryb pogodowy** – włącz/wyłącz (patrz niżej) |
 | `/function powodz:stop` | zatrzymanie podnoszenia wody |
 | `/function powodz:wznow` | wznowienie od obecnego poziomu |
 | `/function powodz:szybciej` / `wolniej` | 2× szybciej / wolniej |
 | `/function powodz:osusz` | usuwa wodę powodziową wokół Ciebie |
 | `/function powodz:reset` | ustawienia domyślne |
 | `/function powodz:pomoc` | lista komend w grze |
+
+## 🌧 Tryb pogodowy (`/function powodz:auto`)
+Powódź zależy od pogody (poziom bazowy = Twoje Y w chwili włączenia):
+- **deszcz** – woda rośnie o 1 blok co `#predkosc` ticków,
+- **burza** – woda rośnie 2× szybciej,
+- **brak opadów** – woda powoli opada, aż wróci do poziomu bazowego.
+
+Pogodę można wymusić: `/weather rain`, `/weather thunder`, `/weather clear`.
+Woda opada tylko w promieniu `#promien` od graczy – w dalszych, niewczytanych miejscach może zostać.
 
 ## Ustawienia
 `/scoreboard players set <nazwa> powodz <wartość>`

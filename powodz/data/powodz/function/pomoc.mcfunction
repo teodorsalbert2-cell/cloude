@@ -1,4 +1,5 @@
 tellraw @s {"text":"=== Powódź - komendy ===","color":"blue","bold":true}
+tellraw @s [{"text":"/function powodz:auto","color":"aqua"},{"text":" - tryb pogodowy (deszcz/burza = woda rośnie, słońce = opada)","color":"gray"}]
 tellraw @s [{"text":"/function powodz:start","color":"aqua"},{"text":" - start od poziomu Twoich stóp","color":"gray"}]
 tellraw @s [{"text":"/function powodz:stop","color":"aqua"},{"text":" - zatrzymaj podnoszenie wody","color":"gray"}]
 tellraw @s [{"text":"/function powodz:wznow","color":"aqua"},{"text":" - wznów od obecnego poziomu","color":"gray"}]

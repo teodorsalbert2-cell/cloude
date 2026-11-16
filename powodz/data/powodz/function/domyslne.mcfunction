@@ -12,3 +12,6 @@ scoreboard players set #start powodz 62
 scoreboard players set #poziom powodz 62
 scoreboard players set #licznik powodz 0
 scoreboard players set #odswiez powodz 0
+# tryb automatyczny (pogoda): 0 = wyłączony, 1 = włączony
+scoreboard players set #auto powodz 0
+scoreboard players set #-1 powodz -1
