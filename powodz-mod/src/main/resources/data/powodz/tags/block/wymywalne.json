@@ -1,0 +1,29 @@
+{
+  "values": [
+    "minecraft:dirt", "minecraft:grass_block", "minecraft:coarse_dirt", "minecraft:rooted_dirt", "minecraft:podzol",
+    "minecraft:mud", "minecraft:sand", "minecraft:red_sand", "minecraft:gravel", "minecraft:clay", "minecraft:farmland",
+    "minecraft:dirt_path", "minecraft:moss_block", "minecraft:glass", "minecraft:glass_pane", "minecraft:torch",
+    "minecraft:wall_torch", "minecraft:lantern", "minecraft:crafting_table", "minecraft:bookshelf", "minecraft:hay_block",
+    "minecraft:sugar_cane", "minecraft:short_grass", "minecraft:tall_grass", "minecraft:fern", "minecraft:ladder",
+    "minecraft:flower_pot", "minecraft:cobweb",
+    { "id": "#minecraft:planks", "required": false },
+    { "id": "#minecraft:logs", "required": false },
+    { "id": "#minecraft:wooden_stairs", "required": false },
+    { "id": "#minecraft:wooden_slabs", "required": false },
+    { "id": "#minecraft:wooden_fences", "required": false },
+    { "id": "#minecraft:fence_gates", "required": false },
+    { "id": "#minecraft:wooden_doors", "required": false },
+    { "id": "#minecraft:wooden_trapdoors", "required": false },
+    { "id": "#minecraft:wooden_pressure_plates", "required": false },
+    { "id": "#minecraft:wooden_buttons", "required": false },
+    { "id": "#minecraft:wool", "required": false },
+    { "id": "#minecraft:wool_carpets", "required": false },
+    { "id": "#minecraft:beds", "required": false },
+    { "id": "#minecraft:banners", "required": false },
+    { "id": "#minecraft:all_signs", "required": false },
+    { "id": "#minecraft:flowers", "required": false },
+    { "id": "#minecraft:crops", "required": false },
+    { "id": "#minecraft:saplings", "required": false },
+    { "id": "#minecraft:leaves", "required": false }
+  ]
+}

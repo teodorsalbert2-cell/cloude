@@ -3,10 +3,10 @@
   "id": "powodz",
   "version": "${version}",
   "name": "Powódź",
-  "description": "Skończona fizyka wody (warstwy po 1/8 bloku), deszcz podnosi wodę, kanały i odpływy.",
+  "description": "Skończona fizyka wody (warstwy po 1/8 bloku), deszcz podnosi wodę, kanały i odpływy, błotniste rzeki i erozja podczas burzy.",
   "license": "MIT",
   "environment": "*",
-  "entrypoints": { "main": ["pl.powodz.PowodzMod"] },
+  "entrypoints": { "main": ["pl.powodz.PowodzMod"], "client": ["pl.powodz.PowodzClient"] },
   "mixins": ["powodz.mixins.json"],
   "depends": {
     "fabricloader": ">=0.16.0",

@@ -1,6 +1,12 @@
 package pl.powodz;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
@@ -33,6 +39,14 @@ public class PowodzMod implements ModInitializer {
     public static final GameRules.Key<GameRules.IntRule> PROMIEN =
             GameRuleRegistry.register("powodzPromien", GameRules.Category.UPDATES, GameRuleFactory.createIntRule(64, 1, 128));
 
+    /** Ile prób wypłukania bloku na tick wokół gracza podczas burzy (tylko przy rzekach). 0 = wyłączone. */
+    public static final GameRules.Key<GameRules.IntRule> EROZJA =
+            GameRuleRegistry.register("powodzErozja", GameRules.Category.UPDATES, GameRuleFactory.createIntRule(10, 0, 1000));
+    /** Kiedy woda w rzece jest brązowa: 0 = przy burzy, 1 = zawsze, 2 = nigdy. */
+    public static final GameRules.Key<GameRules.IntRule> BLOTO =
+            GameRuleRegistry.register("powodzBloto", GameRules.Category.UPDATES,
+                    GameRuleFactory.createIntRule(0, 0, 2, (server, rule) -> wyslijBloto(server, rule.get())));
+
     public static final Block ODPLYW = Registry.register(Registries.BLOCK, Identifier.of(ID, "odplyw"),
             new OdplywBlock(AbstractBlock.Settings.create().mapColor(MapColor.IRON_GRAY).strength(3.0f, 6.0f)
                     .requiresTool().sounds(BlockSoundGroup.METAL)));
@@ -43,6 +57,24 @@ public class PowodzMod implements ModInitializer {
     public void onInitialize() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(e -> e.add(ODPLYW_ITEM));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(e -> e.add(ODPLYW_ITEM));
-        ServerTickEvents.END_WORLD_TICK.register(Deszcz::tick);
+        PayloadTypeRegistry.playS2C().register(BlotoPayload.ID, BlotoPayload.CODEC);
+        ServerTickEvents.END_WORLD_TICK.register(world -> {
+            Deszcz.tick(world);
+            if (world.getDimension().hasSkyLight() && world.getGameRules().getInt(EROZJA) > 0) {
+                Erozja.tick(world, Math.max(1, Math.min(128, world.getGameRules().getInt(PROMIEN))));
+            }
+        });
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            if (ServerPlayNetworking.canSend(handler.getPlayer(), BlotoPayload.ID)) {
+                ServerPlayNetworking.send(handler.getPlayer(), new BlotoPayload(server.getGameRules().getInt(BLOTO)));
+            }
+        });
+        CommandRegistrationCallback.EVENT.register((dispatcher, registry, env) -> Komendy.zarejestruj(dispatcher));
+    }
+
+    private static void wyslijBloto(MinecraftServer server, int tryb) {
+        for (ServerPlayerEntity p : server.getPlayerManager().getPlayerList()) {
+            if (ServerPlayNetworking.canSend(p, BlotoPayload.ID)) ServerPlayNetworking.send(p, new BlotoPayload(tryb));
+        }
     }
 }

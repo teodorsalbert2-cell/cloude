@@ -27,7 +27,6 @@ public final class Deszcz {
         int r = Math.max(1, Math.min(128, world.getGameRules().getInt(PowodzMod.PROMIEN)));
         Random rnd = world.getRandom();
         for (ServerPlayerEntity gracz : world.getPlayers()) {
-            if (gracz.isSpectator()) continue;
             BlockPos srodek = gracz.getBlockPos();
             for (int i = 0; i < ile; i++) {
                 int x = srodek.getX() + rnd.nextInt(2 * r + 1) - r;
