@@ -1,0 +1,13 @@
+{
+  "name": "mc-stress-test",
+  "version": "1.0.0",
+  "description": "Stress-test własnego serwera Minecraft botami mineflayer (AuthMe, ruch, czat, pomiar TPS i pingu)",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "mineflayer": "^4.23.0"
+  }
+}
